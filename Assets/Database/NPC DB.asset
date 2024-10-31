@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: NPC DB
   m_EditorClassIdentifier: 
   <nPC>k__BackingField:
-  - {fileID: 6322893941550754157, guid: 6d86cf233d724f34899c252a78304f6a, type: 3}
   - {fileID: 4349848355856836182, guid: 5570696a81376a1499e3763a3e87cc80, type: 3}
   - {fileID: 3644682998135872236, guid: 823f95ebef021d34491c0890ce61bbbc, type: 3}
