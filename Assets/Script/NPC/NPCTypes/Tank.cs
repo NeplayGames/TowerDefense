@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 namespace TowerDefense.NPC{
-    public class Tank : NPC
+    public class Tank : Npc
     {
     
     }

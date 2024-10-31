@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace TowerDefense.NPC{
-    public class Artillery : NPC
+    public class Artillery : Npc
     {
     
     }
