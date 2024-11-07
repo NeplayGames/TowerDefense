@@ -14,7 +14,14 @@ namespace TowerDefense.NPC
        public NPCManager(NPCDatabase nPCDatabase, Transform startingPoint){
         this.nPCDatabase = nPCDatabase;
         this.startingPoint = startingPoint;
+        Npc.NPCDied += NPCDied;
        }
+
+        private void NPCDied(GameObject npc)
+        {
+            nPCs.Remove(npc.transform);
+            GameObject.Destroy(npc);
+        }
 
         public void InitializeNPC(){
            nPCs.Add(GameObject.Instantiate(this.nPCDatabase.nPC[Random.Range(0, 

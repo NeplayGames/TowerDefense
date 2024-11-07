@@ -5,7 +5,7 @@ using UnityEngine;
 namespace TowerDefense.NPC{
     public class Mosters : Npc
     {
-    
+
     }
 }
 

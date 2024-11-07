@@ -6,25 +6,16 @@ namespace TowerDefense.TOWER
 {
     public class Bullet : MonoBehaviour
     {
-        private Vector3 npcLocation;
-        private Vector3 initialPosition;
-        private float time;
-        private float tempTime = 0;
-        public void Init(Vector2 npcLocation){
-            this.npcLocation = npcLocation;
-            this.initialPosition = transform.position;
-           // transform.LookAt(npcLocation);
-            time = Vector2.Distance(transform.position, npcLocation)/16;
+        private Vector3 direction;
+        public void Init(Vector2 direction){
+            this.direction = direction;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;    
+            transform.rotation = Quaternion.Euler(0, 0, angle);
         }
 
         void Update(){
-            transform.position += npcLocation* Time.deltaTime * 16;
-            if(tempTime < time){
-              // transform.position =  Vector2.Lerp(this.initialPosition, this.npcLocation, tempTime/time);
-               tempTime += Time.deltaTime;
-            }//else{
-               // Destroy(this.gameObject);
-            }
+            transform.position += direction* Time.deltaTime * 16;
         }
     }
+}
 

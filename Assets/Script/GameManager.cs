@@ -12,26 +12,34 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Tower[] towers;
     [SerializeField] private NPCDatabase nPCDatabase;
     [SerializeField] private Transform startingPoint;
+    [SerializeField] private int numberOfNPC = 10;
+    [SerializeField] private BaseTower baseTower;
     private NPCManager nPCManager;
    public static GameManager Instance;
+   private int NPCInstantiated = 0;
    public bool isMute{ get; set;}
     void Start()
     {
         nPCManager = new NPCManager(nPCDatabase, startingPoint);
         if(GameManager.Instance != null){
-        print(Instance.gameObject.name);
             Destroy(this.gameObject);
         }
         foreach(var tow in towers){
             tow.nPCManager = nPCManager;
             tow.gameObject.SetActive(true);
         }
-        print("This is a game");
         Instance = this;
-        InvokeRepeating(nameof(InstantiateNPC), 1, 1);
+        InvokeRepeating(nameof(InstantiateNPC), 1, 3);
+        baseTower.gameOverEvent += GameOver;
     }
 
+    private void GameOver(){
+        baseTower.gameOverEvent -= GameOver;
+        Time.timeScale = 0;
+    }
     private void InstantiateNPC(){
+        if(NPCInstantiated == numberOfNPC)return;
+        NPCInstantiated++;
         nPCManager.InitializeNPC();
     }
     void Update(){
