@@ -6,6 +6,7 @@ namespace TowerDefense.TOWER
 {
     public class Bullet : MonoBehaviour
     {
+       [field: SerializeField] public EBulletType eBulletType{ get; private set; }
         private Vector3 direction;
         public void Init(Vector2 direction){
             this.direction = direction;
@@ -16,6 +17,15 @@ namespace TowerDefense.TOWER
         void Update(){
             transform.position += direction* Time.deltaTime * 16;
         }
+
+        public int Damage(){
+            return Random.Range(2, 14);
+        }
+    }
+
+    public enum EBulletType{
+        ENPC = 0,
+        ETower = 1
     }
 }
 

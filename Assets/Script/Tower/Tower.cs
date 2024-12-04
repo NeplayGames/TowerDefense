@@ -9,12 +9,13 @@ namespace TowerDefense.TOWER
     {
      // [SerializeField] private GameObject bulletGO;
 
-      public NPCManager nPCManager{get; set;}
-
-        protected override void EntityDied()
-        {
-            
+      protected NPCManager nPCManager {
+        get {
+          return GameManager.Instance.nPCManager;
         }
+      }
+
+       
 
         protected override void Start(){
           base.Start();

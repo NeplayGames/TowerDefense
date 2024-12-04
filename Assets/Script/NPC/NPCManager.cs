@@ -6,40 +6,29 @@ using UnityEngine;
 namespace TowerDefense.NPC
 {
 
-    public class NPCManager
+    public class NPCManager : EntityManager
     {
-        private List<Transform> nPCs= new();
        private NPCDatabase nPCDatabase;
         private Transform startingPoint;
        public NPCManager(NPCDatabase nPCDatabase, Transform startingPoint){
         this.nPCDatabase = nPCDatabase;
         this.startingPoint = startingPoint;
-        Npc.NPCDied += NPCDied;
+        Npc.entityDied += NPCDied;
        }
 
         private void NPCDied(GameObject npc)
         {
-            nPCs.Remove(npc.transform);
+            entities.Remove(npc.transform);
             GameObject.Destroy(npc);
         }
 
+        
         public void InitializeNPC(){
-           nPCs.Add(GameObject.Instantiate(this.nPCDatabase.nPC[Random.Range(0, 
+           entities.Add(GameObject.Instantiate(this.nPCDatabase.nPC[Random.Range(0, 
             this.nPCDatabase.nPC.Length)].gameObject,startingPoint.position,startingPoint.rotation).transform);
         }
 
-        public Vector2 NearestNPCPosition(Vector3 towerPosition){
-            float minDistance = Mathf.Infinity;
-            Vector2 result = Vector2.zero;
-            foreach(Transform t in nPCs){
-                float distance = Vector2.Distance(t.position, towerPosition);
-                if(distance < minDistance){
-                    minDistance = distance;
-                    result = t.position;
-                }
-            }
-            return result;
-        }
+       
     }
 
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4660255982273916214}
   - component: {fileID: 293601254471083930}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: TowerBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59ff3682ea6cfbc40a0973983d6f1cda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <eBulletType>k__BackingField: 1
 --- !u!61 &293601254471083930
 BoxCollider2D:
   m_ObjectHideFlags: 0
